@@ -394,15 +394,26 @@ static Novocaine *audioManager = nil;
     // Check the input stream format
     
 # if defined ( USING_IOS )
+    
+    _inputFormat.mSampleRate         = 44100.0;//采样率
+    _inputFormat.mFormatID           = kAudioFormatLinearPCM;//PCM采样
+    _inputFormat.mFormatFlags        = kAudioFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+    _inputFormat.mFramesPerPacket    = 1;//每个数据包多少帧
+    _inputFormat.mChannelsPerFrame   = 1;//1单声道，2立体声
+    _inputFormat.mBitsPerChannel     = 16;//语音每采样点占用位数
+    _inputFormat.mBytesPerFrame      = _inputFormat.mBitsPerChannel*_inputFormat.mChannelsPerFrame/8;//每帧的bytes数
+    _inputFormat.mBytesPerPacket     = _inputFormat.mBytesPerFrame*_inputFormat.mFramesPerPacket;//每个数据包的bytes总数，每帧的bytes数＊每个数据包的帧数
+    _inputFormat.mReserved           = 0;
+    
     UInt32 size;
-	size = sizeof( AudioStreamBasicDescription );
-	CheckError( AudioUnitGetProperty(_inputUnit,
-                                     kAudioUnitProperty_StreamFormat, 
-                                     kAudioUnitScope_Input, 
-                                     1, 
-                                     &_inputFormat,
-                                     &size ),
-               "Couldn't get the hardware input stream format");
+    size = sizeof(AudioStreamBasicDescription);
+    CheckError(AudioUnitSetProperty(_inputUnit,
+                                    kAudioUnitProperty_StreamFormat,
+                                    kAudioUnitScope_Input,
+                                    kInputBus,
+                                    &_inputFormat,
+                                    size),
+               "Couldn't set the ASBD on the audio unit (after setting its sampling rate)");
 	
 	// Check the output stream format
 	size = sizeof( AudioStreamBasicDescription );

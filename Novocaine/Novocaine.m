@@ -410,7 +410,7 @@ static Novocaine *audioManager = nil;
     CheckError(AudioUnitSetProperty(_inputUnit,
                                     kAudioUnitProperty_StreamFormat,
                                     kAudioUnitScope_Input,
-                                    kInputBus,
+                                    kOutputBus,
                                     &_inputFormat,
                                     size),
                "Couldn't set the ASBD on the audio unit (after setting its sampling rate)");

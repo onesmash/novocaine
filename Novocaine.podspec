@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'Novocaine'
-    spec.version      = '0.0.2'
+    spec.version      = '0.0.3'
     spec.summary      = 'Novocaine'
     spec.source_files = 'Novocaine/'
     spec.requires_arc = true

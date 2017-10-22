@@ -116,7 +116,7 @@ static Novocaine *audioManager = nil;
 @property (nonatomic, assign, readwrite) AudioStreamBasicDescription inputFormat;
 @property (nonatomic, assign, readwrite) AudioStreamBasicDescription outputFormat;
 @property (nonatomic, assign, readwrite) BOOL playing;
-@property (nonatomic, assign, readwrite) float *inData;
+@property (nonatomic, assign, readwrite) short *inData;
 @property (nonatomic, assign, readwrite) float *outData;
 
 #if defined (USING_OSX)
@@ -177,7 +177,7 @@ static Novocaine *audioManager = nil;
 	{
         
         // Initialize a float buffer to hold audio
-		self.inData  = (float *)calloc(8192, sizeof(float)); // probably more than we'll need
+		self.inData  = (short *)calloc(8192, sizeof(short)); // probably more than we'll need
         self.outData = (float *)calloc(8192, sizeof(float));
         
         self.inputBlock = nil;
@@ -768,39 +768,7 @@ OSStatus inputCallback   (void						*inRefCon,
         CheckError( AudioUnitRender(sm.inputUnit, ioActionFlags, inTimeStamp, inOutputBusNumber, inNumberFrames, sm.inputBuffer), "Couldn't render the output unit");
         
         
-        // Convert the audio in something manageable
-        // For Float32s ... 
-        if ( sm.numBytesPerSample == 4 ) // then we've already got flaots
-        {
-            
-            float zero = 0.0f;
-            if ( ! sm.isInterleaved ) { // if the data is in separate buffers, make it interleaved
-                for (int i=0; i < sm.numInputChannels; ++i) {
-                    vDSP_vsadd((float *)sm.inputBuffer->mBuffers[i].mData, 1, &zero, sm.inData+i, 
-                               sm.numInputChannels, inNumberFrames);
-                }
-            } 
-            else { // if the data is already interleaved, copy it all in one happy block.
-                // TODO: check mDataByteSize is proper 
-                memcpy(sm.inData, (float *)sm.inputBuffer->mBuffers[0].mData, sm.inputBuffer->mBuffers[0].mDataByteSize);
-            }
-        }
-        
-        // For SInt16s ...
-        else if ( sm.numBytesPerSample == 2 ) // then we're dealing with SInt16's
-        {
-            if ( ! sm.isInterleaved ) {
-                for (int i=0; i < sm.numInputChannels; ++i) {
-                    vDSP_vflt16((SInt16 *)sm.inputBuffer->mBuffers[i].mData, 1, sm.inData+i, sm.numInputChannels, inNumberFrames);
-                }            
-            }
-            else {
-                vDSP_vflt16((SInt16 *)sm.inputBuffer->mBuffers[0].mData, 1, sm.inData, 1, inNumberFrames*sm.numInputChannels);
-            }
-            
-            float scale = 1.0 / (float)INT16_MAX;
-            vDSP_vsmul(sm.inData, 1, &scale, sm.inData, 1, inNumberFrames*sm.numInputChannels);
-        }
+        memcpy(sm.inData, (short *)sm.inputBuffer->mBuffers[0].mData, sm.inputBuffer->mBuffers[0].mDataByteSize);
         
         // Now do the processing! 
         sm.inputBlock(sm.inData, inNumberFrames, sm.numInputChannels);

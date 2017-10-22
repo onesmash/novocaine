@@ -33,9 +33,6 @@
 		FA5526D8152A6452003D9601 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA5526D6152A6452003D9601 /* InfoPlist.strings */; };
 		FA5526DA152A6452003D9601 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5526D9152A6452003D9601 /* main.m */; };
 		FA5526DE152A6452003D9601 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA5526DD152A6452003D9601 /* AppDelegate.mm */; };
-		FA5526E1152A6452003D9601 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA5526E0152A6452003D9601 /* ViewController.mm */; };
-		FA5526E4152A6452003D9601 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5526E2152A6452003D9601 /* ViewController_iPhone.xib */; };
-		FA5526E7152A6452003D9601 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA5526E5152A6452003D9601 /* ViewController_iPad.xib */; };
 		FA5526EF152A6466003D9601 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5526EB152A6466003D9601 /* Accelerate.framework */; };
 		FA5526F0152A6466003D9601 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5526EC152A6466003D9601 /* AudioToolbox.framework */; };
 		FA5526F2152A6466003D9601 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5526EE152A6466003D9601 /* CoreAudio.framework */; };
@@ -44,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0341FB041F9C871400587535 /* Novocaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Novocaine.h; sourceTree = "<group>"; };
 		6BB59728198F7E20006AE4AE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		9AE2143D1768D0C60068A4DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA0B92E7154ACB100079834E /* AudioFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileReader.h; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 		FA55268B152A63B6003D9601 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA55268C152A63B6003D9601 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		FA55268F152A63B6003D9601 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FA552695152A63F6003D9601 /* Novocaine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Novocaine.h; sourceTree = "<group>"; };
 		FA552696152A63F6003D9601 /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Novocaine.m; sourceTree = "<group>"; };
 		FA552697152A63F6003D9601 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
 		FA552698152A63F6003D9601 /* RingBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RingBuffer.mm; sourceTree = "<group>"; };
@@ -82,10 +79,6 @@
 		FA5526DB152A6452003D9601 /* Novocaine iOS Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Novocaine iOS Example-Prefix.pch"; sourceTree = "<group>"; };
 		FA5526DC152A6452003D9601 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA5526DD152A6452003D9601 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		FA5526DF152A6452003D9601 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FA5526E0152A6452003D9601 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		FA5526E3152A6452003D9601 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		FA5526E6152A6452003D9601 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		FA5526EB152A6466003D9601 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FA5526EC152A6466003D9601 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FA5526ED152A6466003D9601 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -201,7 +194,7 @@
 			children = (
 				FA2015EB154B0D9B00F8D3AC /* AudioFileWriter.h */,
 				FA2015EC154B0DA700F8D3AC /* AudioFileWriter.m */,
-				FA552695152A63F6003D9601 /* Novocaine.h */,
+				0341FB041F9C871400587535 /* Novocaine.h */,
 				FA552696152A63F6003D9601 /* Novocaine.m */,
 				FA552697152A63F6003D9601 /* RingBuffer.h */,
 				FA552698152A63F6003D9601 /* RingBuffer.mm */,
@@ -216,10 +209,6 @@
 			children = (
 				FA5526DC152A6452003D9601 /* AppDelegate.h */,
 				FA5526DD152A6452003D9601 /* AppDelegate.mm */,
-				FA5526DF152A6452003D9601 /* ViewController.h */,
-				FA5526E0152A6452003D9601 /* ViewController.mm */,
-				FA5526E2152A6452003D9601 /* ViewController_iPhone.xib */,
-				FA5526E5152A6452003D9601 /* ViewController_iPad.xib */,
 				FA5526D4152A6452003D9601 /* Supporting Files */,
 			);
 			path = "Novocaine iOS Example";
@@ -319,8 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA5526D8152A6452003D9601 /* InfoPlist.strings in Resources */,
-				FA5526E4152A6452003D9601 /* ViewController_iPhone.xib in Resources */,
-				FA5526E7152A6452003D9601 /* ViewController_iPad.xib in Resources */,
 				6BB59729198F7E20006AE4AE /* Default-568h@2x.png in Resources */,
 				FA2015DE154B02CC00F8D3AC /* TLC.mp3 in Resources */,
 			);
@@ -350,7 +337,6 @@
 				FA9FB52D152A6505004B7AA8 /* RingBuffer.mm in Sources */,
 				FA5526DA152A6452003D9601 /* main.m in Sources */,
 				FA5526DE152A6452003D9601 /* AppDelegate.mm in Sources */,
-				FA5526E1152A6452003D9601 /* ViewController.mm in Sources */,
 				FA0B92EA154ACB100079834E /* AudioFileReader.mm in Sources */,
 				FA2015EE154B0DA700F8D3AC /* AudioFileWriter.m in Sources */,
 			);
@@ -389,22 +375,6 @@
 				FA5526D7152A6452003D9601 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FA5526E2152A6452003D9601 /* ViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA5526E3152A6452003D9601 /* en */,
-			);
-			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		FA5526E5152A6452003D9601 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA5526E6152A6452003D9601 /* en */,
-			);
-			name = ViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

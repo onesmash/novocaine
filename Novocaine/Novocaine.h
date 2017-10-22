@@ -43,6 +43,7 @@ FOUNDATION_EXTERN void CheckError(OSStatus error, const char *operation);
 
 typedef void (^NovocaineOutputBlock)(float *data, UInt32 numFrames, UInt32 numChannels);
 typedef void (^NovocaineInputBlock)(float *data, UInt32 numFrames, UInt32 numChannels);
+typedef void (^NovocaineShortInputBlock)(short *data, UInt32 numFrames, UInt32 numChannels);
 
 #if defined (USING_IOS)
 @interface Novocaine : NSObject <UIAlertViewDelegate>
@@ -63,11 +64,11 @@ typedef void (^NovocaineInputBlock)(float *data, UInt32 numFrames, UInt32 numCha
 
 // Explicitly declaring the block setters will create the correct block signature for auto-complete.
 // These will map to the setters for the block properties below.
-- (void)setInputBlock:(NovocaineInputBlock)block;
+- (void)setInputBlock:(NovocaineShortInputBlock)block;
 - (void)setOutputBlock:(NovocaineOutputBlock)block;
 
 @property (nonatomic, copy) NovocaineOutputBlock outputBlock;
-@property (nonatomic, copy) NovocaineInputBlock inputBlock;
+@property (nonatomic, copy) NovocaineShortInputBlock inputBlock;
 
 // ------------------------------------------------------------------
 

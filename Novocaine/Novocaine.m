@@ -154,16 +154,6 @@ static Novocaine *audioManager = nil;
     return audioManager;
 }
 
-+ (id)allocWithZone:(NSZone *)zone {
-    @synchronized(self) {
-        if (audioManager == nil) {
-            audioManager = [super allocWithZone:zone];
-            return audioManager;  // assignment and return on first allocation
-        }
-    }
-    return nil; // on subsequent allocation attempts return nil
-}
-
 // ND: If NSCopying protocol is to be supported, it should be declared with class and done correctly. Disabled for now.
 
 //- (id)copyWithZone:(NSZone *)zone
@@ -296,8 +286,7 @@ static Novocaine *audioManager = nil;
     UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
     CheckError( AudioSessionSetProperty (kAudioSessionProperty_AudioCategory,
                                          sizeof (sessionCategory),
-                                         &sessionCategory), "Couldn't set audio category");    
-    
+                                         &sessionCategory), "Couldn't set audio category");
     
     // Add a property listener, to listen to changes to the session
     CheckError( AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, sessionPropertyListener, (__bridge void*)self), "Couldn't add audio session property listener");
@@ -692,7 +681,12 @@ static Novocaine *audioManager = nil;
 
 #endif
 
-
+- (void)stop
+{
+    CheckError(AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_AudioRouteChange, sessionPropertyListener, (__bridge void*)self), "");
+    CheckError(AudioUnitUninitialize(_inputUnit), "");
+    CheckError(AudioComponentInstanceDispose(_inputUnit), "");
+}
 
 - (void)pause {
 	
@@ -732,7 +726,6 @@ static Novocaine *audioManager = nil;
 #endif
             
             self.playing = YES;
-            
 		}
 	}
     
